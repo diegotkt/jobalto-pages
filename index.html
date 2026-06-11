@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jobalto — Pages partagées</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --text: #18181b;
+    --text-muted: #71717a;
+    --border: #e4e4e7;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0a0a;
+      --surface: #18181b;
+      --text: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --border: #27272a;
+      --accent: #60a5fa;
+      --accent-hover: #93c5fd;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 24px;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin: 0 0 40px;
+  }
+  .subtitle a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  li {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: border-color .15s ease;
+  }
+  li:hover {
+    border-color: var(--accent);
+  }
+  li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 18px;
+    color: var(--text);
+    text-decoration: none;
+    gap: 16px;
+  }
+  li a:hover { color: var(--accent); }
+  .name {
+    font-weight: 500;
+    word-break: break-word;
+  }
+  .meta {
+    color: var(--text-muted);
+    font-size: 13px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .empty {
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    padding: 32px;
+    text-align: center;
+    color: var(--text-muted);
+  }
+  .empty code {
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+  .error {
+    background: var(--surface);
+    border: 1px solid #ef4444;
+    border-radius: 10px;
+    padding: 16px 18px;
+    color: #ef4444;
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  footer a { color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Jobalto — Pages partagées</h1>
+  <p class="subtitle">Published from <a href="https://github.com/diegotkt/jobalto-pages" target="_blank" rel="noopener">diegotkt/jobalto-pages</a></p>
+  <div id="content">
+    <p class="subtitle">Loading…</p>
+  </div>
+  <footer>
+    Hosted on GitHub Pages.
+  </footer>
+</div>
+<script>
+(async () => {
+  const REPO = "diegotkt/jobalto-pages";
+  const content = document.getElementById("content");
+  try {
+    const r = await fetch(`https://api.github.com/repos/${REPO}/contents/`);
+    if (!r.ok) throw new Error(`GitHub API returned ${r.status}`);
+    const files = await r.json();
+    const htmls = files
+      .filter(f => f.type === "file" && f.name.endsWith(".html") && f.name !== "index.html")
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    if (!htmls.length) {
+      content.innerHTML = `
+        <div class="empty">
+          No files published yet. Add an <code>.html</code> file to this repo to see it here.
+        </div>`;
+      return;
+    }
+
+    // Fetch last-commit dates per file in parallel (best-effort; skip on rate limit)
+    const dated = await Promise.all(htmls.map(async f => {
+      try {
+        const cr = await fetch(`https://api.github.com/repos/${REPO}/commits?path=${encodeURIComponent(f.name)}&per_page=1`);
+        if (cr.ok) {
+          const c = await cr.json();
+          if (c.length) return { ...f, date: c[0].commit.author.date };
+        }
+      } catch (_) {}
+      return { ...f, date: null };
+    }));
+
+    // Newest first
+    dated.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+
+    const fmt = iso => {
+      if (!iso) return "";
+      const d = new Date(iso);
+      return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+    };
+
+    const ul = document.createElement("ul");
+    for (const f of dated) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = f.name;
+      a.innerHTML = `<span class="name">${f.name}</span><span class="meta">${fmt(f.date)}</span>`;
+      li.appendChild(a);
+      ul.appendChild(li);
+    }
+    content.innerHTML = "";
+    content.appendChild(ul);
+  } catch (e) {
+    content.innerHTML = `<div class="error">Couldn't load file list: ${e.message}</div>`;
+  }
+})();
+</script>
+</body>
+</html>
