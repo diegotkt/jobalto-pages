@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>bilan-client — Catalogue Skills Jobalto</title>
+<style>
+:root{--teal:#143635;--teal2:#2A6B69;--gold:#E6B527;--cream:#F9F7F0;--body:#333333;--slate:#33373D}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Suisse Intl',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:var(--body);background:#fff;line-height:1.6}
+a{color:inherit}
+.topbar{background:var(--teal);color:#fff;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:4px solid var(--gold)}
+.topbar .brand{font-weight:700;letter-spacing:.08em;font-size:15px}
+.topbar a{color:#fff;text-decoration:none;font-size:14px;opacity:.85}
+.topbar a:hover{opacity:1;color:var(--gold)}
+.hero{background:linear-gradient(135deg,#0E2424,var(--teal));color:#fff;padding:56px 32px 48px;text-align:center}
+.hero h1{font-size:42px;font-weight:700;letter-spacing:-.01em}
+.hero .tagline{color:#D0D0D0;font-size:18px;margin-top:10px}
+.hero .creator{display:inline-block;margin-top:18px;background:rgba(230,181,39,.15);border:1px solid var(--gold);color:var(--gold);padding:6px 18px;border-radius:999px;font-size:13px;font-weight:700}
+.hero .creator a{color:var(--gold)}
+.wrap{max-width:1060px;margin:0 auto;padding:48px 32px}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.block{background:var(--cream);border-left:5px solid var(--gold);border-radius:3px;padding:24px 26px;margin-bottom:24px}
+.block h2{color:var(--teal);font-size:20px;font-weight:700;margin-bottom:10px}
+.block p{font-size:15.5px}
+.block ul{margin:8px 0 0 20px;font-size:15.5px}
+.block li{margin-bottom:6px}
+.block code{background:#fff;border:1px solid #e3dfd2;border-radius:3px;padding:1px 6px;font-size:13px;color:var(--teal)}
+.mockup{position:sticky;top:24px;background:var(--cream);border-radius:3px;padding:18px;border:1px solid #ece8db}
+.mockup h3{color:var(--teal);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;text-align:center}
+.mockup-svg{width:100%;height:auto;display:block}
+.mockup .caption{font-size:12.5px;color:var(--slate);text-align:center;margin-top:10px;opacity:.75}
+footer{background:var(--teal);color:#fff;text-align:center;padding:28px;margin-top:24px;font-weight:700;letter-spacing:.1em;font-size:14px;border-top:4px solid var(--gold)}
+/* index */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:8px}
+.card{background:var(--cream);border-radius:3px;border:1px solid #ece8db;border-left:5px solid var(--gold);padding:24px;text-decoration:none;display:block;transition:transform .12s ease,box-shadow .12s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(20,54,53,.14)}
+.card .emoji{font-size:30px}
+.card h2{color:var(--teal);font-size:18px;font-weight:700;margin:10px 0 6px}
+.card p{font-size:14px;color:var(--slate)}
+.card .by{margin-top:14px;font-size:12px;font-weight:700;color:var(--teal2);text-transform:uppercase;letter-spacing:.05em}
+.count{color:var(--gold);font-weight:700}
+
+</style>
+</head>
+<body>
+<nav class="topbar">
+  <span class="brand">JOBALTO · CATALOGUE SKILLS</span>
+  <a href="skills-catalogue.html">← Tout le catalogue</a>
+</nav>
+<header class="hero">
+  <h1>📊 bilan-client</h1>
+  <p class="tagline">État de compte PDF complet pour un client</p>
+  <span class="creator">Créée par Diego — <a href="https://github.com/diegotkt">@diegotkt</a></span>
+</header>
+<main class="wrap">
+  <div class="grid">
+    <div>
+      <section class="block">
+        <h2>🎯 Le but</h2>
+        <p>Produire un bilan formel de l'état de compte d'un client Jobalto : toutes ses factures ouvertes et annulées, avec les notes de crédit appariées, sur une période donnée. Les données viennent directement de la Blue Base Airtable — zéro ressaisie manuelle.</p>
+      </section>
+      <section class="block">
+        <h2>👥 Qui l'utilise, et quand</h2>
+        <p>Côté finance / administration, quand un client demande où il en est :</p>
+        <ul><li>Un client conteste ou veut un récapitulatif exhaustif de sa facturation.</li><li>Tu prépares une relance et tu veux joindre un état de compte propre.</li><li>Tu veux vérifier la cohérence factures ↔ notes de crédit d'un client avant clôture.</li></ul>
+      </section>
+      <section class="block">
+        <h2>📤 Output attendu</h2>
+        <p>Un PDF de 2 pages A4 brandé Jobalto, prêt à envoyer au client :</p>
+        <ul><li>Page 1 : récap des factures ouvertes avec montants et échéances.</li><li>Page 2 : factures annulées + notes de crédit appariées.</li><li>Totaux calculés, mise en page formelle aux couleurs Jobalto.</li></ul>
+      </section>
+    </div>
+    <aside class="mockup">
+      <h3>Output type</h3>
+      <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" role="img" class="mockup-svg"><rect x="148" y="22" width="240" height="352" rx="4" fill="#143635" opacity="0.10"/><rect x="140" y="14" width="240" height="352" rx="4" fill="#ffffff" stroke="#d8d4c8" stroke-width="1.5"/><rect x="140" y="14" width="240" height="46" rx="4" fill="#143635"/><rect x="140" y="56" width="240" height="5" fill="#E6B527"/><text x="156" y="42" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">ÉTAT DE COMPTE</text><text x="156" y="82" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#143635">Client : Manufast SRL — période 2025</text><rect x="156" y="96" width="208" height="16" rx="2" fill="#143635"/><rect x="162" y="101" width="40" height="6" rx="2" fill="#E6B527"/><rect x="232" y="101" width="40" height="6" rx="2" fill="#E6B527"/><rect x="302" y="101" width="40" height="6" rx="2" fill="#E6B527"/><rect x="156" y="118" width="208" height="16" rx="2" fill="#F9F7F0"/><rect x="162" y="123" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="232" y="123" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="302" y="123" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="156" y="136" width="208" height="16" rx="2" fill="#ffffff"/><rect x="162" y="141" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="232" y="141" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="302" y="141" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="156" y="154" width="208" height="16" rx="2" fill="#F9F7F0"/><rect x="162" y="159" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="232" y="159" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="302" y="159" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="156" y="172" width="208" height="16" rx="2" fill="#ffffff"/><rect x="162" y="177" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="232" y="177" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="302" y="177" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="156" y="190" width="208" height="16" rx="2" fill="#F9F7F0"/><rect x="162" y="195" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="232" y="195" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="302" y="195" width="48" height="5" rx="2" fill="#b9b4a5"/><rect x="156" y="218" width="200" height="6" rx="3" fill="#d6d2c4"/><rect x="156" y="231" width="184" height="6" rx="3" fill="#d6d2c4"/><rect x="156" y="244" width="192" height="6" rx="3" fill="#d6d2c4"/><rect x="156" y="257" width="150" height="6" rx="3" fill="#d6d2c4"/><rect x="286" y="330" width="78" height="6" rx="3" fill="#143635"/><rect x="306" y="342" width="58" height="5" rx="2" fill="#b9b4a5"/></svg>
+      <p class="caption">Aperçu illustratif du livrable produit par la skill.</p>
+    </aside>
+  </div>
+</main>
+<footer>ÉLÈVE TA CARRIÈRE — ÉLÈVE TON IA.</footer>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>partage-skill-equipe — Catalogue Skills Jobalto</title>
+<style>
+:root{--teal:#143635;--teal2:#2A6B69;--gold:#E6B527;--cream:#F9F7F0;--body:#333333;--slate:#33373D}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Suisse Intl',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:var(--body);background:#fff;line-height:1.6}
+a{color:inherit}
+.topbar{background:var(--teal);color:#fff;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:4px solid var(--gold)}
+.topbar .brand{font-weight:700;letter-spacing:.08em;font-size:15px}
+.topbar a{color:#fff;text-decoration:none;font-size:14px;opacity:.85}
+.topbar a:hover{opacity:1;color:var(--gold)}
+.hero{background:linear-gradient(135deg,#0E2424,var(--teal));color:#fff;padding:56px 32px 48px;text-align:center}
+.hero h1{font-size:42px;font-weight:700;letter-spacing:-.01em}
+.hero .tagline{color:#D0D0D0;font-size:18px;margin-top:10px}
+.hero .creator{display:inline-block;margin-top:18px;background:rgba(230,181,39,.15);border:1px solid var(--gold);color:var(--gold);padding:6px 18px;border-radius:999px;font-size:13px;font-weight:700}
+.hero .creator a{color:var(--gold)}
+.wrap{max-width:1060px;margin:0 auto;padding:48px 32px}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.block{background:var(--cream);border-left:5px solid var(--gold);border-radius:3px;padding:24px 26px;margin-bottom:24px}
+.block h2{color:var(--teal);font-size:20px;font-weight:700;margin-bottom:10px}
+.block p{font-size:15.5px}
+.block ul{margin:8px 0 0 20px;font-size:15.5px}
+.block li{margin-bottom:6px}
+.block code{background:#fff;border:1px solid #e3dfd2;border-radius:3px;padding:1px 6px;font-size:13px;color:var(--teal)}
+.mockup{position:sticky;top:24px;background:var(--cream);border-radius:3px;padding:18px;border:1px solid #ece8db}
+.mockup h3{color:var(--teal);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;text-align:center}
+.mockup-svg{width:100%;height:auto;display:block}
+.mockup .caption{font-size:12.5px;color:var(--slate);text-align:center;margin-top:10px;opacity:.75}
+footer{background:var(--teal);color:#fff;text-align:center;padding:28px;margin-top:24px;font-weight:700;letter-spacing:.1em;font-size:14px;border-top:4px solid var(--gold)}
+/* index */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:8px}
+.card{background:var(--cream);border-radius:3px;border:1px solid #ece8db;border-left:5px solid var(--gold);padding:24px;text-decoration:none;display:block;transition:transform .12s ease,box-shadow .12s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(20,54,53,.14)}
+.card .emoji{font-size:30px}
+.card h2{color:var(--teal);font-size:18px;font-weight:700;margin:10px 0 6px}
+.card p{font-size:14px;color:var(--slate)}
+.card .by{margin-top:14px;font-size:12px;font-weight:700;color:var(--teal2);text-transform:uppercase;letter-spacing:.05em}
+.count{color:var(--gold);font-weight:700}
+
+</style>
+</head>
+<body>
+<nav class="topbar">
+  <span class="brand">JOBALTO · CATALOGUE SKILLS</span>
+  <a href="skills-catalogue.html">← Tout le catalogue</a>
+</nav>
+<header class="hero">
+  <h1>📦 partage-skill-equipe</h1>
+  <p class="tagline">Publie ta skill perso vers le repo équipe via PR</p>
+  <span class="creator">Créée par Diego — <a href="https://github.com/diegotkt">@diegotkt</a></span>
+</header>
+<main class="wrap">
+  <div class="grid">
+    <div>
+      <section class="block">
+        <h2>🎯 Le but</h2>
+        <p>Promouvoir une skill Claude personnelle (créée dans <code>~/.claude/skills/</code>) vers le repo équipe <code>Jobalto/jobalto-team-repo</code>, proprement et sans connaître git : checklist qualité, clone, branche, plugin.json, mise à jour du README (avec ton nom en créateur !) et ouverture de la Pull Request.</p>
+      </section>
+      <section class="block">
+        <h2>👥 Qui l'utilise, et quand</h2>
+        <p>Pour tout collaborateur dont une skill perso marche bien :</p>
+        <ul><li>Tu as créé une skill, elle tourne, tu veux la diffuser à toute l'équipe.</li><li>Tu dis « ma skill est prête, je veux la partager » — Claude fait le reste.</li><li>La checklist qualité bloque les secrets (tokens, IBAN, NISS) avant publication.</li></ul>
+      </section>
+      <section class="block">
+        <h2>📤 Output attendu</h2>
+        <p>Une Pull Request complète sur le repo équipe :</p>
+        <ul><li>Skill copiée dans <code>skills/</code>, plugin.json versionné, README à jour.</li><li>PR ouverte avec description et reviewer (Diego) assigné.</li><li>Après merge : la skill est dispo automatiquement pour toute l'équipe.</li></ul>
+      </section>
+    </div>
+    <aside class="mockup">
+      <h3>Output type</h3>
+      <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" role="img" class="mockup-svg"><rect x="60" y="50" width="180" height="44" rx="6" fill="#143635"/><text x="150" y="77" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">1 · Checklist qualité</text><line x1="150" y1="94" x2="150" y2="114" stroke="#E6B527" stroke-width="3"/><polygon points="144,112 156,112 150,122" fill="#E6B527"/><rect x="60" y="116" width="180" height="44" rx="6" fill="#2A6B69"/><text x="150" y="143" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">2 · Clone + branche</text><line x1="150" y1="160" x2="150" y2="180" stroke="#E6B527" stroke-width="3"/><polygon points="144,178 156,178 150,188" fill="#E6B527"/><rect x="60" y="182" width="180" height="44" rx="6" fill="#143635"/><text x="150" y="209" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">3 · plugin.json + README</text><line x1="150" y1="226" x2="150" y2="246" stroke="#E6B527" stroke-width="3"/><polygon points="144,244 156,244 150,254" fill="#E6B527"/><rect x="60" y="248" width="180" height="44" rx="6" fill="#2A6B69"/><text x="150" y="275" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">4 · Commit + push</text><line x1="240" y1="270" x2="260" y2="270" stroke="#E6B527" stroke-width="3"/><line x1="260" y1="270" x2="260" y2="315" stroke="#E6B527" stroke-width="3"/><line x1="260" y1="315" x2="272" y2="315" stroke="#E6B527" stroke-width="3"/><polygon points="270,309 270,321 280,315" fill="#E6B527"/><rect x="280" y="290" width="200" height="50" rx="6" fill="#E6B527"/><text x="380" y="320" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#143635" text-anchor="middle">✓ PR OUVERTE → ÉQUIPE</text></svg>
+      <p class="caption">Aperçu illustratif du livrable produit par la skill.</p>
+    </aside>
+  </div>
+</main>
+<footer>ÉLÈVE TA CARRIÈRE — ÉLÈVE TON IA.</footer>
+</body>
+</html>

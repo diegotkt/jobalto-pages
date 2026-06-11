@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalogue Skills Jobalto</title>
+<style>
+:root{--teal:#143635;--teal2:#2A6B69;--gold:#E6B527;--cream:#F9F7F0;--body:#333333;--slate:#33373D}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Suisse Intl',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:var(--body);background:#fff;line-height:1.6}
+a{color:inherit}
+.topbar{background:var(--teal);color:#fff;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:4px solid var(--gold)}
+.topbar .brand{font-weight:700;letter-spacing:.08em;font-size:15px}
+.topbar a{color:#fff;text-decoration:none;font-size:14px;opacity:.85}
+.topbar a:hover{opacity:1;color:var(--gold)}
+.hero{background:linear-gradient(135deg,#0E2424,var(--teal));color:#fff;padding:56px 32px 48px;text-align:center}
+.hero h1{font-size:42px;font-weight:700;letter-spacing:-.01em}
+.hero .tagline{color:#D0D0D0;font-size:18px;margin-top:10px}
+.hero .creator{display:inline-block;margin-top:18px;background:rgba(230,181,39,.15);border:1px solid var(--gold);color:var(--gold);padding:6px 18px;border-radius:999px;font-size:13px;font-weight:700}
+.hero .creator a{color:var(--gold)}
+.wrap{max-width:1060px;margin:0 auto;padding:48px 32px}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.block{background:var(--cream);border-left:5px solid var(--gold);border-radius:3px;padding:24px 26px;margin-bottom:24px}
+.block h2{color:var(--teal);font-size:20px;font-weight:700;margin-bottom:10px}
+.block p{font-size:15.5px}
+.block ul{margin:8px 0 0 20px;font-size:15.5px}
+.block li{margin-bottom:6px}
+.block code{background:#fff;border:1px solid #e3dfd2;border-radius:3px;padding:1px 6px;font-size:13px;color:var(--teal)}
+.mockup{position:sticky;top:24px;background:var(--cream);border-radius:3px;padding:18px;border:1px solid #ece8db}
+.mockup h3{color:var(--teal);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;text-align:center}
+.mockup-svg{width:100%;height:auto;display:block}
+.mockup .caption{font-size:12.5px;color:var(--slate);text-align:center;margin-top:10px;opacity:.75}
+footer{background:var(--teal);color:#fff;text-align:center;padding:28px;margin-top:24px;font-weight:700;letter-spacing:.1em;font-size:14px;border-top:4px solid var(--gold)}
+/* index */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:8px}
+.card{background:var(--cream);border-radius:3px;border:1px solid #ece8db;border-left:5px solid var(--gold);padding:24px;text-decoration:none;display:block;transition:transform .12s ease,box-shadow .12s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(20,54,53,.14)}
+.card .emoji{font-size:30px}
+.card h2{color:var(--teal);font-size:18px;font-weight:700;margin:10px 0 6px}
+.card p{font-size:14px;color:var(--slate)}
+.card .by{margin-top:14px;font-size:12px;font-weight:700;color:var(--teal2);text-transform:uppercase;letter-spacing:.05em}
+.count{color:var(--gold);font-weight:700}
+
+</style>
+</head>
+<body>
+<nav class="topbar">
+  <span class="brand">JOBALTO · CATALOGUE SKILLS</span>
+  <a href="https://github.com/Jobalto/jobalto-team-repo">Repo GitHub →</a>
+</nav>
+<header class="hero">
+  <h1>Catalogue des skills</h1>
+  <p class="tagline"><span class="count">10</span> skills partagées par l'équipe — clique sur une carte pour voir le but, le contexte d'usage et l'output attendu.</p>
+</header>
+<main class="wrap">
+  <div class="cards">
+  <a class="card" href="bce-finder.html">
+    <span class="emoji">🔎</span>
+    <h2>bce-finder</h2>
+    <p>Trouve le numéro BCE de n'importe quelle société belge</p>
+    <span class="by">Par Diego</span>
+  </a>
+  <a class="card" href="bilan-client.html">
+    <span class="emoji">📊</span>
+    <h2>bilan-client</h2>
+    <p>État de compte PDF complet pour un client</p>
+    <span class="by">Par Diego</span>
+  </a>
+  <a class="card" href="fiche-signaletique-prospection.html">
+    <span class="emoji">🪪</span>
+    <h2>fiche-signaletique-prospection</h2>
+    <p>Fiche commerciale 1 page pour prospecter avec un candidat</p>
+    <span class="by">Par Nicolas</span>
+  </a>
+  <a class="card" href="jobalead-csv-prepare.html">
+    <span class="emoji">📋</span>
+    <h2>jobalead-csv-prepare</h2>
+    <p>Convertit n'importe quelle liste de prospects au format CRM Jobalead</p>
+    <span class="by">Par Diego</span>
+  </a>
+  <a class="card" href="jobalead-dev-flow.html">
+    <span class="emoji">🚀</span>
+    <h2>jobalead-dev-flow</h2>
+    <p>Développer sur le CRM sans connaître git</p>
+    <span class="by">Par Diego</span>
+  </a>
+  <a class="card" href="jobalto-candidate-presentation.html">
+    <span class="emoji">👤</span>
+    <h2>jobalto-candidate-presentation</h2>
+    <p>Email de présentation d'un candidat à un client</p>
+    <span class="by">Par Johnny</span>
+  </a>
+  <a class="card" href="jobalto-client-welcome.html">
+    <span class="emoji">🤝</span>
+    <h2>jobalto-client-welcome</h2>
+    <p>Email de bienvenue pour un nouveau client</p>
+    <span class="by">Par Johnny</span>
+  </a>
+  <a class="card" href="jobalto-confirmation-email.html">
+    <span class="emoji">📅</span>
+    <h2>jobalto-confirmation-email</h2>
+    <p>Confirmation d'entretien ou de démarrage pour un candidat</p>
+    <span class="by">Par Johnny</span>
+  </a>
+  <a class="card" href="mise-en-demeure-client.html">
+    <span class="emoji">⚖️</span>
+    <h2>mise-en-demeure-client</h2>
+    <p>Mise en demeure légale belge + brouillon Gmail</p>
+    <span class="by">Par Diego</span>
+  </a>
+  <a class="card" href="partage-skill-equipe.html">
+    <span class="emoji">📦</span>
+    <h2>partage-skill-equipe</h2>
+    <p>Publie ta skill perso vers le repo équipe via PR</p>
+    <span class="by">Par Diego</span>
+  </a>
+  </div>
+</main>
+<footer>ÉLÈVE TA CARRIÈRE — ÉLÈVE TON IA.</footer>
+</body>
+</html>
